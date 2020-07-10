@@ -51,6 +51,41 @@ export class AppComponent implements OnInit {
     }
   }
 
+  displayDay(activity: Activity): string {
+    const day = (new Date(activity.start_date)).getDay();
+    if (day === 1) {
+      return 'Lundi';
+    } else if (day === 2) {
+      return 'Mardi';
+    } else if (day === 3) {
+      return 'Mercredi';
+    } else if (day === 4) {
+      return 'Jeudi';
+    } else if (day === 5) {
+      return 'Vendredi';
+    } else if (day === 6) {
+      return 'Samedi';
+    } else if (day === 7) {
+      return 'Dimanche';
+    }
+  }
+
+  displayType(activity: Activity): string {
+    if (activity.type === 'Swim') {
+      return 'Natation';
+    } else if (activity.type === 'VirtualRide') {
+      return 'Home trainer';
+    } else if (activity.type === 'Run') {
+      return 'Course à pied';
+    } else if (activity.type === 'Ride') {
+      return 'Vélo';
+    } else if (activity.type === 'WeightTraining') {
+      return 'Musculation';
+    } else {
+      return 'Autre';
+    }
+  }
+
   private redirectAuthStrava(): void {
     if (environment.production) {
       window.location.href = 'https://www.strava.com/oauth/authorize?client_id=7251&redirect_uri=https://angular-strava-53a6b.firebaseapp.com&response_type=code&scope=activity:read';

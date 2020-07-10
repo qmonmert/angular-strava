@@ -1,25 +1,28 @@
 
 <div class="container">
-  <h3>Dernière activité</h3>
 
-  <div class="card" *ngIf="lastActivity">
-    <div class="card-body">
-      <h5 class="card-title">{{ lastActivity.type }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ lastActivity.name }}</h6>
-      <ul>
-        <li>{{ lastActivity.moving_time }}</li>
-        <li>{{ lastActivity.distance }}</li>
-        <li>{{ lastActivity.start_date }}</li>
-        <li>{{ lastActivity.kudos_count }}</li>
-      </ul>
+  <div class="container-last-activity">
+    <div class="card" *ngIf="lastActivity">
+      <div class="card-body">
+        <h5 class="card-title">Dernière activité : {{ displayType(lastActivity) }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ lastActivity.name }}</h6>
+        <ul>
+          <li>Temps : {{ lastActivity.moving_time }}</li>
+          <li>Distance : {{ lastActivity.distance }}</li>
+          <li>Heure : {{ lastActivity.start_date }}</li>
+          <li>Kudos : {{ lastActivity.kudos_count }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <h3>Activités de la semaine</h3>
+  <br />
+
+  <h5>Semaine en cours</h5>
   <div class="container-activities">
     <div class="card" *ngFor="let activity of weekActivities">
       <div class="card-body">
-        <h5 class="card-title">{{ activity.type }}</h5>
+        <h5 class="card-title">{{ displayType(activity) }} <span class="badge badge-pill badge-info">{{ displayDay(activity) }}</span></h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ activity.name }}</h6>
       </div>
     </div>
